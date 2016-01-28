@@ -1,0 +1,14 @@
+ESP8266 Nest Remote Sensor
+
+Use the ino file as firmware to for esp8266 with DS18B20
+
+Replace SSID and wifi password in top of INO file to connect to your wifi.
+
+Run server on the same network, replace IP and port with appropriate values.
+
+Calibrate temperature sensor and set ranges to your pleasing.
+
+
+Turns to off while below target temperature and turns the system on when remote temperature returns to target_temp - dwell
+
+Email: James.Dianics@gmail.com

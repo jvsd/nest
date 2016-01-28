@@ -12,6 +12,7 @@ username = 'user@gmail.com'
 password = 'password'
 
 nest_api = nest.Nest(username,password)
+#TARGET TEMPERATURE
 target_temp = 74
 #States are 'COOLING','OFF'
 current_state = 'ON'
@@ -45,7 +46,9 @@ def change_to_off(nest_api):
 def get_away(nest_api):
     return nest_api.structures[0].away
 
+#CALIBRATED BIAS
 def get_remote_temp(self,sock):
+        BIAS = 2
         data = ''
         try:
             data = sock.recv(1024)
@@ -55,12 +58,13 @@ def get_remote_temp(self,sock):
         else:
             if(len(data)>0):
                 print 'New Data'
-                temp_f =float(data.strip('\x00'))-2
+                temp_f =float(data.strip('\x00'))-BIAS
                 self.sock_temp = temp_f
                 return temp_f
             else:
                 return self.sock_temp
-
+            
+#SET DWELL TEMPERATURE
 class controller(object):
     def __init__(self,nest_api,target_temp,addr):
         self.target_temp = target_temp
